@@ -7,19 +7,25 @@ name: CICD
 
 on:
   push:
-    branches: [main,master]
-    
+    branches: [main, master]
+
 jobs:
   build:
-    runs-on: [self runner]
+    runs-on: self-hosted
+
     steps:
       - name: Checkout Source
         uses: actions/checkout@v3
+
       - name: Set Node.js 16.x
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
+
       - name: Install Dependencies
-        run : npm install
+        run: npm install
+
       - name: Test Project
-        run: npm test
+        run: n
+
+
